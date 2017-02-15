@@ -5,8 +5,7 @@ import { Recipe } from '../recipe';
   templateUrl: './recipe-list.component.html'
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [];
-  recipe = new Recipe('Dummy', 'Dummy', 'http://www.haocai777.com/Article/UploadFiles2012c/201501/2015010709343083.jpg', []);
+  recipes: Recipe[] = [new Recipe('Dummy', 'Dummy', 'http://www.haocai777.com/Article/UploadFiles2012c/201501/2015010709343083.jpg', [])];
   @Output() recipeSelected = new EventEmitter<Recipe>();
   constructor() { }
 
