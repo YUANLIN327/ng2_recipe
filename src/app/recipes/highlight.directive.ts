@@ -1,15 +1,17 @@
-import { Directive, ElementRef, Renderer, HostListener, HostBinding } from '@angular/core';
+import { Directive, ElementRef, Renderer, HostListener, HostBinding, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[rbHighlight]'
 })
 export class HighlightDirective {
-  background = 'red';
+  @Input() defaultBackgroundColor = 'white';
+  @Input() highlightColor: string;
+  private background: string;
   @HostListener('mouseenter') changeColorToGreen(): void {
-    this.background = 'green';
+    this.background = this.highlightColor;
   }
   @HostListener('mouseleave') changeColorBackToRed(): void {
-    this.background = 'red';
+    this.background = this.defaultBackgroundColor;
   }
   @HostListener('click', ['$event']) onClick(event): void {
     console.log('$event', event.target);
@@ -17,8 +19,11 @@ export class HighlightDirective {
   @HostBinding('style.background') get getBackgroundColor() {
     return this.background;
   }
+
   constructor(private elementRef: ElementRef, private renderer: Renderer) {
     // this.renderer.setElementStyle(this.elementRef.nativeElement, 'background', 'green');
   }
-
+  OnInit() {
+    this.background = this.defaultBackgroundColor;
+  }
 }
