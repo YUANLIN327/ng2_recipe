@@ -6,7 +6,7 @@ import { Recipe } from '../recipe';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
-  recipe = new Recipe('Dummy', 'Dummy', 'http://www.haocai777.com/Article/UploadFiles2012c/201501/2015010709343083.jpg');
+  recipe = new Recipe('Dummy', 'Dummy', 'http://www.haocai777.com/Article/UploadFiles2012c/201501/2015010709343083.jpg', []);
   @Output() recipeSelected = new EventEmitter<Recipe>();
   constructor() { }
 
