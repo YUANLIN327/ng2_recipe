@@ -8,8 +8,11 @@ export class HighlightDirective {
   @HostListener('mouseenter') changeColorToGreen(): void {
     this.background = 'green';
   }
-   @HostListener('mouseleave') changeColorBackToRed(): void {
+  @HostListener('mouseleave') changeColorBackToRed(): void {
     this.background = 'red';
+  }
+  @HostListener('click', ['$event']) onClick(event): void {
+    console.log('$event', event.target);
   }
   @HostBinding('style.background') get getBackgroundColor() {
     return this.background;
